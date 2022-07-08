@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Models\Payment;
 use App\Models\Student;
+use App\Models\Whatsapp;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -35,11 +36,14 @@ class SendPayment implements ShouldQueue
     {
         $payment = $this->payment;
         $student = Student::find($payment->student_id);
+        $whatsapp = Whatsapp::where('ket','reguser')->first();
         $data = [
-            'api_key' => 'ExJ7Ra1wiYtGPU2lrUa3Cje7GBaYIm',
-            'sender' => '6285155333252',
+            'api_key' => "$whatsapp->apikey",
+            'sender' => "$whatsapp->sender",
             'number' => "$student->nohp_ortu",
-            'message' => "Nama Siswa : $student->name \nNo Daftar: $student->nodaftar \nNominal : Rp. $payment->nominal \nId Bayar : $payment->id_bayar \nJenis Pembayaran : $payment->jenis_pembayaran, \nBayar : $payment->jenis_bayar",
+            'message' => "Nama Siswa : $student->name \nNo Daftar: $student->nodaftar
+            \nNominal : Rp. $payment->nominal \nId Bayar : $payment->id_bayar
+            \nJenis Pembayaran : $payment->jenis_pembayaran, \nBayar : $payment->jenis_bayar \n\n$whatsapp->message",
             'url' => "https://ppdb2023.smatelkombandung.sch.id/storage/$payment->bukti_bayar",
         ];
         $curl = curl_init();
