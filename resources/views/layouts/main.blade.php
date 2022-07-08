@@ -41,6 +41,8 @@
     <link href="{{asset('/lib/datatables.net-dt/css/jquery.dataTables.min.css')}}" rel="stylesheet">
     <link href="{{asset('/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css')}}" rel="stylesheet">
 
+    <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet" />
+
 
 
 
@@ -98,6 +100,8 @@
 <script src="{{asset('/lib/datatables.net-dt/js/dataTables.dataTables.min.js')}}"></script>
 <script src="{{asset('/lib/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{asset('/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js')}}"></script>
+<script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+
 
 <script src="{{asset('/assets/js/dashforge.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -114,6 +118,15 @@
     toastr.error('{{ session('error') }}', 'GAGAL!');
 
     @endif
+</script>
+
+<script>
+    var quill = new Quill('#quill_editor', {
+        theme: 'snow'
+    });
+    quill.on('text-change', function(delta, oldDelta, source) {
+        document.getElementById("quill_html").value = quill.root.innerHTML;
+    });
 </script>
 
 

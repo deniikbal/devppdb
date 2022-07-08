@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\User;
+use App\Models\Whatsapp;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -34,11 +35,14 @@ class SendWaRegister implements ShouldQueue
     public function handle()
     {
         $user = $this->user;
+        $whatsapp = Whatsapp::where('ket','reguser')->first();
         $data = [
-            'api_key' => 'ExJ7Ra1wiYtGPU2lrUa3Cje7GBaYIm',
-            'sender' => '6285155333252',
+            'api_key' => "$whatsapp->apikey",
+            'sender' => "$whatsapp->sender",
             'number' => "$user->nohp",
-            'message' => "Terima kasih sudah membuat akun web PPDB SMA Telkom Bandung, berikut data pendaftaran: \n\nNama Lengkap : $user->name \nEmail :  $user->email \n\nTahap selanjutnya silahkan orang tua  $user->name segera menghubungi admin PPDB \n\nAdmin 1 : 081322299010 (Bu Nissa)\nAdmin 2 : 081398877234 (Bu Lilis)\nAdmin 3 : 082116497877 (Bu Ranti)\n\n*PANITIA PPDB SMA TELKOM BANDUNG*\n\n*Note : Untuk login di web silahkan menggunakan email dan pass yang sudah di buat.",
+            'message' => "Terimakasih sudah mendaftar di WEB PPDB SMA TELKOM BANDUNG
+            \n*Nama Lengkap* : $user->name \n*Email* : $user->email \n*Password* : $user->password_plain \n
+            \n$whatsapp->message",
         ];
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");

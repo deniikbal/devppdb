@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\Student;
+use App\Models\Whatsapp;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -33,11 +34,14 @@ class SendRegisStudent implements ShouldQueue
     public function handle()
     {
         $student = $this->student;
+        $whatsapp = Whatsapp::where('ket','reguser')->first();
+        //dd($whatsapp);
         $data = [
-            'api_key' => 'ExJ7Ra1wiYtGPU2lrUa3Cje7GBaYIm',
-            'sender' => '6285155333252',
+            'api_key' => "$whatsapp->apikey",
+            'sender' => "$whatsapp->sender",
             'number' => "$student->nohp_ortu",
-            'message' => "*Pendaftaran Calon Siswa Berhasil* \n\n*Nama Lengkap* : $student->name \n*No Daftar* : $student->nodaftar \n*Asal Sekolah* : $student->asal_sekolah",
+            'message' => "*Pendaftaran Calon Siswa Berhasil* \n\n*Nama Lengkap* : $student->name \n*No Daftar* : $student->nodaftar \n*Jenis Kelamin* : $student->jenis_kelamin \n*Kecamatan Domisili* : $student->kecamatan_pd \n*Asal Sekolah* : $student->asal_sekolah \n*No HP* : $student->nohp_siswa
+            \n\n$whatsapp->message",
         ];
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");

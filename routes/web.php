@@ -118,11 +118,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('destroy/{user}',[\App\Http\Controllers\UserController::class,'destroy'])->name('destroy');
     Route::post('/createuser',[\App\Http\Controllers\UserController::class,'create'])->name('createuser');
     Route::post('/updateuser/{user}',[\App\Http\Controllers\UserController::class,'update'])->name('updateuser');
-
-
-
-
-
-
+    //setting Whatsapp
+    Route::controller(\App\Http\Controllers\WhatsappController::class)->group(function () {
+         Route::get('/whatsapp','index')->name('whatsapp.index');
+         Route::post('/whatsappstore','store')->name('wa.store');
+         Route::post('/whatsapupdate/{whatsapp}','update')->name('wa.update');
+         Route::PUT('/whatsappstore/{whatsapp}','destroy')->name('whatsapp.destroy');
+     });
 });
 

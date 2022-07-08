@@ -29,7 +29,7 @@
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-4 col-form-label">Kecamatan Domisili</label>
                         <div class="col-sm-8">
-                            <input type="text" name="kecamatan_pd" class="form-control"  placeholder="Asal Sekolah" required>
+                            <input type="text" name="kecamatan_pd" class="form-control"  placeholder="Kecamatan Tempat Tinggal" required>
                         </div>
                     </div>
                     <div class="form-group row">

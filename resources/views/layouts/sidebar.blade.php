@@ -103,7 +103,7 @@
                 </ul>
             </li>
             <li class="nav-label mg-t-25">User Interface</li>
-            <li class="nav-item"><a href="../../components" class="nav-link"><i data-feather="layers"></i> <span>Components</span></a></li>
+            <li class="nav-item"><a href="{{route('whatsapp.index')}}" class="nav-link"><i data-feather="layers"></i> <span>Setting WhatsApp</span></a></li>
             <li class="nav-item"><a href="../../collections" class="nav-link"><i data-feather="box"></i> <span>Collections</span></a></li>
         </ul>
     </div>

@@ -78,6 +78,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'nohp' => $data['nohp'],
             'password' => Hash::make($data['password']),
+            'password_plain' => $data['password'],
             'role'=>'siswa',
         ]);
         $user->notify(new RegisterNotification($user));
