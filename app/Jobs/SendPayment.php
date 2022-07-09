@@ -36,7 +36,7 @@ class SendPayment implements ShouldQueue
     {
         $payment = $this->payment;
         $student = Student::find($payment->student_id);
-        $whatsapp = Whatsapp::where('ket','reguser')->first();
+        $whatsapp = Whatsapp::where('ket','regstudent')->first();
         $data = [
             'api_key' => "$whatsapp->apikey",
             'sender' => "$whatsapp->sender",

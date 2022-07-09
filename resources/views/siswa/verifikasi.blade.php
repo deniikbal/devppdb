@@ -57,237 +57,164 @@
         </div>
     </div>
     @endif
-    <div class="card bd-0 bd-md-x bd-md-y mg-t-10 mb-2">
-        <div class="card-header bg-danger text-white">
-            Data Pribadi oke
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="text-sm-center">
-                        @if($student->foto==null)
-                            <img src="{{ asset('assets/img/pp.jpg') }}" style="width: 150px;height: 200px" class="img-thumbnail">
-                        @else
-                            <img src="{{asset('storage/'. $student->foto)}}" width="200" height="300" alt="Foto">
-                        @endif
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <ul class="list-group">
-                        <li class="list-group-item bg-lightblue">Nama Lengkap : {{$student->name}}</li>
-                        <li class="list-group-item bg-lightblue">Jenis Kelamin : {{$student->jenis_kelamin}}</li>
-                        <li class="list-group-item bg-lightblue">Tempat Lahir : {{$student->tempat}}</li>
-                        <li class="list-group-item bg-lightblue">Tanggal Lahir : {{\Carbon\Carbon::parse($student->tanggal)->isoFormat('D MMMM Y')}}</li>
-                        <li class="list-group-item bg-lightblue">NIK : {{$student->nik}}</li>
-                        <li class="list-group-item bg-lightblue">Agama : {{\Illuminate\Support\Str::title($student->agama)}}</li>
-                        <li class="list-group-item bg-lightblue">No HP : {{$student->nohp_siswa}}</li>
 
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <ul class="list-group">
-                        <li class="list-group-item bg-lightblue">Anak Ke : {{$student->anak_ke}}</li>
-                        <li class="list-group-item bg-lightblue">Jumlah Saudara : {{$student->jumlah_saudara}}</li>
-                        <li class="list-group-item bg-lightblue">Tinggi Badan : {{$student->tinggi_badan}}</li>
-                        <li class="list-group-item bg-lightblue">Berat Badan : {{$student->berat_badan}}</li>
-                        <li class="list-group-item bg-lightblue">Hoby : {{$student->hoby}}</li>
-                        <li class="list-group-item bg-lightblue">Cita-cita : {{$student->cita}}</li>
-                    </ul>
+    <div class="mt-3">
+        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Riwayat Sekolah</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Orang Tua</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#alamat" role="tab" aria-controls="alamat" aria-selected="false">Alamat Rumah</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#prestasi" role="tab" aria-controls="prestasi" aria-selected="false">Prestasi</a>
+            </li>
+        </ul>
+        <div class="tab-content bd bd-gray-300 bd-t-0 pd-20" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="text-sm-center">
+                                @if($student->foto==null)
+                                    <img src="{{ asset('assets/img/pp.jpg') }}" style="width: 150px;height: 200px" class="img-thumbnail">
+                                @else
+                                    <img src="{{asset('storage/'. $student->foto)}}" width="200" height="300" alt="Foto">
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <ul class="list-group">
+                                <li class="list-group-item bg-lightblue">Nama Lengkap : {{$student->name}}</li>
+                                <li class="list-group-item bg-lightblue">Jenis Kelamin : {{$student->jenis_kelamin}}</li>
+                                <li class="list-group-item bg-lightblue">Tempat Lahir : {{$student->tempat}}</li>
+                                <li class="list-group-item bg-lightblue">Tanggal Lahir : {{\Carbon\Carbon::parse($student->tanggal)->isoFormat('D MMMM Y')}}</li>
+                                <li class="list-group-item bg-lightblue">NIK : {{$student->nik}}</li>
+                                <li class="list-group-item bg-lightblue">Agama : {{\Illuminate\Support\Str::title($student->agama)}}</li>
+                                <li class="list-group-item bg-lightblue">No HP : {{$student->nohp_siswa}}</li>
+
+                            </ul>
+                        </div>
+                        <div class="col-sm-3">
+                            <ul class="list-group">
+                                <li class="list-group-item bg-lightblue">Anak Ke : {{$student->anak_ke}}</li>
+                                <li class="list-group-item bg-lightblue">Jumlah Saudara : {{$student->jumlah_saudara}}</li>
+                                <li class="list-group-item bg-lightblue">Tinggi Badan : {{$student->tinggi_badan}}</li>
+                                <li class="list-group-item bg-lightblue">Berat Badan : {{$student->berat_badan}}</li>
+                                <li class="list-group-item bg-lightblue">Hoby : {{$student->hoby}}</li>
+                                <li class="list-group-item bg-lightblue">Cita-cita : {{$student->cita}}</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="card bd-0 bd-md-x bd-md-y mg-t-10 mb-2">
-        <div class="card-header text-white bg-danger">
-            Riwayat Sekolah
-        </div>
-        <div class="card-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-3">
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <ul class="list-group">
+                                    <li class="list-group-item bg-lightblue">NISN : {{$student->nisn}}</li>
+                                    <li class="list-group-item bg-lightblue">Asal Sekolah : {{$student->asal_sekolah}}</li>
+                                    <li class="list-group-item bg-lightblue">NPSN : {{$student->tinggi_badan}}</li>
+                                    <li class="list-group-item bg-lightblue">Provinsi : {{$student->berat_badan}}</li>
+                                    <li class="list-group-item bg-lightblue">Kabupaten : {{$student->hoby}}</li>
+                                    <li class="list-group-item bg-lightblue">Kecamatan : {{$student->cita}}</li>
+                                    <li class="list-group-item bg-lightblue">Desa : {{$student->cita}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <li class="list-group-item bg-lightblue">No Kartu Keluarga : {{$student->nokk}}</li>
+                                <li class="list-group-item bg-lightblue">Nama Ayah : {{$student->namaayah}}</li>
+                                <li class="list-group-item bg-lightblue">NIK Ayah : {{$student->nikayah}}</li>
+                                <li class="list-group-item bg-lightblue">Tahun Lahir Ayah : {{$student->tahun_ayah}}</li>
+                                <li class="list-group-item bg-lightblue">Pendidikan Ayah : {{$student->pendidikan_ayah}}</li>
+                                <li class="list-group-item bg-lightblue">Pekerjaan Ayah : {{$student->pekerjaan_ayah}}</li>
+                                <li class="list-group-item bg-lightblue">Penghasilan Ayah : {{$student->penghasilan_ayah}}</li>
+
+                            </div>
+                            <div class="col-sm-6">
+                                <ul class="list-group">
+
+                                    <li class="list-group-item bg-lightblue">Nama Ibu : {{$student->nama_ibu}}</li>
+                                    <li class="list-group-item bg-lightblue">NIK Ibu : {{$student->nik_ibu}}</li>
+                                    <li class="list-group-item bg-lightblue">Tahun Lahir Ibu : {{$student->tahun_ibu}}</li>
+                                    <li class="list-group-item bg-lightblue">Pendidikan Ibu : {{$student->pendidikan_ibu}}</li>
+                                    <li class="list-group-item bg-lightblue">Pekerjaan Ibu : {{$student->pekerjaan_ibu}}</li>
+                                    <li class="list-group-item bg-lightblue">Penghasilan Ibu : {{$student->penghasilan_ibu}}</li>
+                                </ul>
+                            </div>
+                        </div>
 
                     </div>
-                    <div class="col-sm-9">
+                </div>
+            </div>
+            <div class="tab-pane fade" id="alamat" role="tabpanel" aria-labelledby="contact-tab">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <li class="list-group-item bg-lightblue">Alamat : {{$student->alamat_pd}}</li>
+                        <li class="list-group-item bg-lightblue">Jarak: {{$student->jarak}} Km<br> Waktu: {{$student->waktu}} Menit
+                        </li>
+                        <li class="list-group-item bg-lightblue">Desa : {{$student->desa_pd}}</li>
+                    </div>
+                    <div class="col-sm-6">
                         <ul class="list-group">
-                            <li class="list-group-item bg-lightblue">NISN : {{$student->nisn}}</li>
-                            <li class="list-group-item bg-lightblue">Asal Sekolah : {{$student->asal_sekolah}}</li>
-                            <li class="list-group-item bg-lightblue">NPSN : {{$student->tinggi_badan}}</li>
-                            <li class="list-group-item bg-lightblue">Provinsi : {{$student->berat_badan}}</li>
-                            <li class="list-group-item bg-lightblue">Kabupaten : {{$student->hoby}}</li>
-                            <li class="list-group-item bg-lightblue">Kecamatan : {{$student->cita}}</li>
-                            <li class="list-group-item bg-lightblue">Desa : {{$student->cita}}</li>
+
+                            <li class="list-group-item bg-lightblue">Kecamatan : {{$student->kecamatan_pd}}</li>
+                            <li class="list-group-item bg-lightblue">Kabupaten : {{$student->kota_pd}}</li>
+                            <li class="list-group-item bg-lightblue">Provinsi : {{$student->provinsi_pd}}</li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="card bd-0 bd-md-x bd-md-y mg-t-10 mb-2">
-        <div class="card-header text-white bg-danger">
-            Data Orang Tua
-        </div>
-        <div class="card-body">
-            <div class="container">
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">No Kartu Keluarga: Oke</label>
-                    <div class="col-sm-3">
-                        <input id="name" class="form-control" value="{{$student->nokk}}" readonly>
+            <div class="tab-pane fade" id="prestasi" role="tabpanel" aria-labelledby="contact-tab">
+                <div class="card-body ">
+                    <div class="container">
+                        <table class="table">
+                            <thead class="bg-danger text-white">
+                            <tr role="row">
+                                <th class="sorting_asc" rowspan="1" colspan="1" style="width: 0px;" aria-label="No">No</th>
+                                <th class="sorting" tabindex="0" aria-controls="prestasi-table" rowspan="1" colspan="1" style="width: 0px;" aria-label="Nama Kegiatan: activate to sort column ascending">Nama
+                                    Kegiatan</th>
+                                <th class="sorting" tabindex="0" aria-controls="prestasi-table" rowspan="1" colspan="1" style="width: 0px;" aria-label="Jenis: activate to sort column ascending">Jenis</th>
+                                <th class="sorting" tabindex="0" aria-controls="prestasi-table" rowspan="1" colspan="1" style="width: 0px;" aria-label="Tingkat: activate to sort column ascending">Tingkat</th>
+                                <th class="sorting" tabindex="0" aria-controls="prestasi-table" rowspan="1" colspan="1" style="width: 0px;" aria-label="Tahun: activate to sort column ascending">Tahun</th>
+                                <th class="sorting" tabindex="0" aria-controls="prestasi-table" rowspan="1" colspan="1" style="width: 0px;" aria-label="Pencapaian: activate to sort column ascending">Pencapaian
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @php
+                                $no = 1;
+                            @endphp
+                            @foreach ($prestasi as $item)
+                                <tr>
+                                    <td class="text-center">{{ $no++ }}</a></td>
+                                    <td>{{$item->nama_kegiatan}}</td>
+                                    <td>{{$item->jenis_kegiatan}}</td>
+                                    <td>{{$item->tingkat}}</td>
+                                    <td>{{$item->tahun}}</td>
+                                    <td>{{$item->hasil}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Nama Ayah:</label>
-                    <div class="col-sm-3">
-                        <input class="form-control" name="namaayah"
-                               value="{{$student->namaayah}}" type="text" readonly>
-                    </div>
-                    <label class="col-sm-2 col-form-label">NIK Ayah: <span class="tx-danger">*</span></label>
-                    <div class="col-sm-3">
-                        <input class="form-control @error('nikayah') is-invalid @enderror" name="nikayah"
-                               value="{{$student->nikayah}}" type="text" readonly>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Tahun Lahir Ayah: <span class="tx-danger">*</span></label>
-                    <div class="col-sm-3">
-                        <input class="form-control @error('tahun_ayah') is-invalid @enderror" name="tahun_ayah"
-                               value="{{$student->tahun_ayah}}" readonly>
-                    </div>
-                    <label class="col-sm-2 col-form-label">Pendidikn Ayah: <span class="tx-danger">*</span></label>
-                    <div class="col-sm-3">
-                        <input class="form-control @error('tahun_ayah') is-invalid @enderror" name="tahun_ayah"
-                               value="{{$student->pendidikan_ayah}}" readonly>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Pekerjaan Ayah: <span class="tx-danger">*</span></label>
-                    <div class="col-sm-3">
-                        <input class="form-control @error('tahun_ayah') is-invalid @enderror" name="tahun_ayah"
-                               value="{{$student->pekerjaan_ayah}}" readonly>
-                    </div>
-                    <label class="col-sm-2 col-form-label">Penghasilan Ayah: <span class="tx-danger">*</span></label>
-                    <div class="col-sm-3">
-                        <input class="form-control @error('tahun_ayah') is-invalid @enderror" name="tahun_ayah"
-                               value="{{$student->penghasilan_ayah}}" readonly>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Nama ibu: <span class="tx-danger">*</span></label>
-                    <div class="col-sm-3">
-                        <input class="form-control @error('tahun_ayah') is-invalid @enderror" name="tahun_ayah"
-                               value="{{$student->nama_ibu}}" readonly>
-                    </div>
-                    <label class="col-sm-2 col-form-label">NIK Ibu: <span class="tx-danger">*</span></label>
-                    <div class="col-sm-3">
-                        <input class="form-control @error('tahun_ayah') is-invalid @enderror" name="tahun_ayah"
-                               value="{{$student->nik_ibu}}" readonly>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Tahun Lahir Ibu: <span class="tx-danger">*</span></label>
-                    <div class="col-sm-3">
-                        <input class="form-control @error('tahun_ayah') is-invalid @enderror" name="tahun_ayah"
-                               value="{{$student->tahun_ibu}}" readonly>
-                    </div>
-                    <label class="col-sm-2 col-form-label">Pendidikn Ibu: <span class="tx-danger">*</span></label>
-                    <div class="col-sm-3">
-                        <input class="form-control @error('tahun_ayah') is-invalid @enderror" name="tahun_ayah"
-                               value="{{$student->pendidikan_ibu}}" readonly>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Pekerjaan Ibu: <span class="tx-danger">*</span></label>
-                    <div class="col-sm-3">
-                        <input class="form-control @error('tahun_ayah') is-invalid @enderror" name="tahun_ayah"
-                               value="{{$student->pekerjaan_ibu}}" readonly>
-                    </div>
-                    <label class="col-sm-2 col-form-label">Penghasilan Ibu: <span class="tx-danger">*</span></label>
-                    <div class="col-sm-3">
-                        <input class="form-control @error('tahun_ayah') is-invalid @enderror" name="tahun_ayah"
-                               value="{{$student->penghasilan_ibu}}" readonly>
-                    </div>
-                </div>
-                <hr>
-                <div class="divider-text" style="color: red;font-size: medium">Alamat Rumah</div>
-                <hr>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Alamat</label>
-                    <div class="col-sm-3">
-                            <textarea name="alamat_pd" class="form-control" readonly
-                                      rows="2" style="height: 100px">{{ $student->alamat_pd }}</textarea>
-                    </div>
-                    <div class="col-md-3">
-                        <label for="inputEmail4">Jarak Rumah Ke Sekolah</label>
-                        <input type="text" class="form-control @error('jarak')
-                            is-invalid @enderror" name="jarak" value="{{$student->jarak}}" readonly>
-                    </div>
-                    <div class="col-md-2">
-                        <label for="inputEmail4">Waktu</label>
-                        <input type="text" readonly class="form-control" name="waktu" value="{{$student->waktu}}">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Desa / Kelurahan : <span class="tx-danger">*</span></label>
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control @error('desa_pd') is-invalid @enderror"
-                               name="desa_pd" value="{{$student->desa_pd}}" readonly>
-                    </div>
-                    <label class="col-sm-2 col-form-label">Kecamatan : <span class="tx-danger">*</span></label>
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control @error('kecamatan_pd') is-invalid @enderror"
-                               name="kecamatan_pd" value="{{$student->kecamatan_pd}}" readonly>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Kabupaten / Kota</label>
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control @error('kota_pd') is-invalid @enderror"
-                               name="kota_pd" value="{{$student->kota_pd}}" readonly>
-                    </div>
-                    <label class="col-sm-2 col-form-label">Provinsi</label>
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control @error('provinsi_pd') is-invalid @enderror"
-                               name="provinsi_pd" value="{{$student->provinsi_pd}}" readonly>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card bd-0 bd-md-x bd-md-y mg-t-10">
-        <div class="card-header text-white bg-danger">
-            Prestasi Siswa
-
-        </div>
-        <div class="card-body ">
-            <div class="container">
-                <table class="table">
-                    <thead>
-                    <tr role="row">
-                        <th class="sorting_asc" rowspan="1" colspan="1" style="width: 0px;" aria-label="No">No</th>
-                        <th class="sorting" tabindex="0" aria-controls="prestasi-table" rowspan="1" colspan="1" style="width: 0px;" aria-label="Nama Kegiatan: activate to sort column ascending">Nama
-                            Kegiatan</th>
-                        <th class="sorting" tabindex="0" aria-controls="prestasi-table" rowspan="1" colspan="1" style="width: 0px;" aria-label="Jenis: activate to sort column ascending">Jenis</th>
-                        <th class="sorting" tabindex="0" aria-controls="prestasi-table" rowspan="1" colspan="1" style="width: 0px;" aria-label="Tingkat: activate to sort column ascending">Tingkat</th>
-                        <th class="sorting" tabindex="0" aria-controls="prestasi-table" rowspan="1" colspan="1" style="width: 0px;" aria-label="Tahun: activate to sort column ascending">Tahun</th>
-                        <th class="sorting" tabindex="0" aria-controls="prestasi-table" rowspan="1" colspan="1" style="width: 0px;" aria-label="Pencapaian: activate to sort column ascending">Pencapaian
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @php
-                        $no = 1;
-                    @endphp
-                    @foreach ($prestasi as $item)
-                        <tr>
-                            <td class="text-center">{{ $no++ }}</a></td>
-                            <td>{{$item->nama_kegiatan}}</td>
-                            <td>{{$item->jenis_kegiatan}}</td>
-                            <td>{{$item->tingkat}}</td>
-                            <td>{{$item->tahun}}</td>
-                            <td>{{$item->hasil}}</td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>

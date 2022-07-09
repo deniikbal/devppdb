@@ -62,7 +62,7 @@ Route::group(['middleware' => 'auth'], function () {
     //PRINT
     Route::get('printkartu/{student}',[\App\Http\Controllers\PrintController::class,'printkartu'])
         ->name('printkartu');
-    Route::get('printformulir/{student}',[\App\Http\Controllers\PrintController::class,'printformulir'])
+    Route::get('printformulir/{student}',[\App\Http\Controllers\PrintFormulirController::class,'printformulir'])
         ->name('printformulir');
     //PAYMENT STUDENT
     Route::get('/payments/{student}/edit',[\App\Http\Controllers\PaymentController::class,'index'])
