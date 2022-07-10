@@ -16,26 +16,15 @@ class PaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function tdu()
-    {
-        $main = 'User';
-        $sub = 'User Management';
-        $payments = Payment::with('student')
-            ->where('jenis_pembayaran', 'tdu')
-            ->where('verifikasi', 0)
-            ->get();
-        $totaltdu = Payment::with('student')->where('jenis_pembayaran', 'tdu')->sum('nominal');
-
-
-        return view('admin.payment.tdu', compact('main', 'sub', 'payments', 'totaltdu'));
-    }
 
     public function du()
     {
-        $main = 'User';
-        $sub = 'User Management';
-        $payments = Payment::with('student')->where('jenis_pembayaran', 'du')->get();
-        $totaldu = Payment::with('student')->where('jenis_pembayaran', 'du')
+        $main = 'Payment';
+        $sub = 'Titipan Daftar Ulang';
+        $payments = Payment::with('student')
+            ->where('jenis_pembayaran', 'tdu')
+            ->get();
+        $totaldu = Payment::with('student')->where('jenis_pembayaran', 'tdu')
             ->sum('nominal');
         return view('admin.payment.du', compact('main', 'sub', 'payments', 'totaldu'));
     }
@@ -84,12 +73,39 @@ class PaymentController extends Controller
         return redirect()->back()->with('success', 'Verifikasi berhasil');
     }
 
+    public function tp()
+    {
+        $payments = Payment::with('student')
+            ->where('jenis_pembayaran', 'tp')
+            ->get();
+        $main = 'Payment';
+        $sub = 'Titipan Pembayaran';
+        return view('admin.payment.tp', compact('payments','main','sub'));
+
+    }
+    public function vp()
+    {
+        $main = 'Payment';
+        $sub = 'Verifikasi Pembayaran';
+        $payments = Payment::with('student')
+            ->where('verifikasi', 0)
+            ->get();
+        $totaltdu = Payment::with('student')->where('jenis_pembayaran', 'tdu')->sum('nominal');
+
+
+        return view('admin.payment.tdu', compact('main', 'sub', 'payments', 'totaltdu'));
+    }
+
     public function allpayment()
     {
         $main = 'Payment';
         $sub = 'All Payment';
-        $payments = Payment::with('student')->groupBy('student_id')->get();
-        ddd($payments);
-        return view('admin.payment.allpayment', compact('main', 'sub', 'payments'));
+        $students = Student::with('payment')
+            ->where('verifikasi_bayar', 1)
+            ->get();
+        $total = Payment::with('student')->sum('nominal');
+        return view('admin.payment.allpayment', compact('main', 'sub',
+            'students', 'total'));
+
     }
 }

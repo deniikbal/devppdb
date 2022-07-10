@@ -36,7 +36,10 @@
                             <td>{{$item->id_bayar}}</td>
                             <td>{{$item->student['name']}}</td>
                             <td><span class="badge badge-{{$item->jenis_pembayaran=='tdu' ? 'danger' : 'primary'}}">
-                                    {{\Illuminate\Support\Str::upper($item->jenis_pembayaran)}}</span></td>
+                                    {{\Illuminate\Support\Str::upper($item->jenis_pembayaran)}}</span><br>
+                                <span class="badge badge-primary">{{$item->keterangan}}</span>
+
+                            </td>
                             <td>{{$item->nominal}}</td>
                             <td><span class="badge badge-{{$item->jenis_bayar=='cash' ? 'success' : 'warning'}}">
                                     {{\Illuminate\Support\Str::upper($item->jenis_bayar)}}</span></td>

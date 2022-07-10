@@ -1,12 +1,9 @@
 @extends('layouts.main')
 @section('content')
     <div class="container">
-        <div class="alert alert-solid alert-danger" role="alert">
-            <h5 class="text-white">Total Saldo Pendaftaran : @currency($totaltdu)</h5>
-        </div>
         <div class="card">
             <div class="card-header d-flex justify-content-between">
-                <h5>Titipan Daftar Ulang (TDU)</h5>
+                <h5>Verifikasi Pembayaran</h5>
                 <a href="{{route('tambahpembayaran')}}" class="btn btn-xs btn-primary"><i data-feather="plus-square"></i> Add Pembayaran</a>
             </div>
             @include('admin.payment.modal.addpayment')

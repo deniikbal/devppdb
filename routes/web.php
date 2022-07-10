@@ -92,12 +92,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard',[\App\Http\Controllers\Admin\DashboardController::class,'index'])->name('dashboard');
     //DASHBOARD CALON SISWA
     Route::resource('student', StudentController::class);
-    Route::get('/sudahtdu',[StudentController::class, 'sudahtdu'])->name('sudahtdu');
     Route::get('/abort',[StudentController::class, 'abort'])->name('abort');
     Route::get('/belumverifikasi',[StudentController::class, 'belumverifikasi'])->name('belumverifikasi');
     //Payment Calon Siswa
-    Route::get('/tdu',[\App\Http\Controllers\Admin\PaymentController::class,'tdu'])->name('tdu');
+    Route::get('/vp',[\App\Http\Controllers\Admin\PaymentController::class,'vp'])->name('vp');
     Route::get('/du',[\App\Http\Controllers\Admin\PaymentController::class,'du'])->name('du');
+    Route::get('/tp',[\App\Http\Controllers\Admin\PaymentController::class,'tp'])->name('tp');
+    Route::get('/allpayment',[\App\Http\Controllers\Admin\PaymentController::class,'allpayment'])
+        ->name('allpayment');
     Route::get('/tambahpembayaran',[PaymentController::class,'tambahpembayaran'])
         ->name('tambahpembayaran');
     Route::PUT('/verifikasipayment/{item}',[PaymentController::class,'verifikasipayment'])

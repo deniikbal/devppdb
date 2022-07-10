@@ -39,15 +39,6 @@ class StudentController extends Controller
         return abort(403,'Anda tidak punya akses');
     }
 
-    public function sudahtdu()
-    {
-        $payments = Payment::with('student')
-            ->where('jenis_pembayaran', 'tdu')
-            ->get();
-        $main = 'Calon Siswa';
-        $sub = 'Sudah Bayar';
-        return view('admin.student.sudahtdu', compact('payments','main','sub'));
 
-    }
 
 }

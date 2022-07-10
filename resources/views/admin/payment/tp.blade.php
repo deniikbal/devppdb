@@ -6,7 +6,7 @@
 {{--        </div>--}}
         <div class="card">
             <div class="card-header d-flex justify-content-between">
-                <h5>Titipan Daftar Ulang (TDU)</h5>
+                <h5>Titipan Pembayaran</h5>
                 <a href="{{route('tambahpembayaran')}}" class="btn btn-xs btn-primary"><i data-feather="plus-square"></i> Add Pembayaran</a>
             </div>
             @include('admin.payment.modal.addpayment')

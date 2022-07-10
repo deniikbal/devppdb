@@ -69,9 +69,10 @@
             <li class="nav-item with-sub">
                 <a href="" class="nav-link"><i data-feather="file"></i> <span>Pembayaran</span></a>
                 <ul>
-                    <li><a href="{{route ('tdu')}}">Pendaftaran</a></li>
-                    <li><a href="{{route('sudahtdu')}}">TDU</a></li>
-                    <li><a href="{{route ('du')}}">DU</a></li>
+                    <li><a href="{{route ('vp')}}">Verifikasi Pembayaran </a></li>
+                    <li><a href="{{route('tp')}}">Titipan Pembayaran</a></li>
+                    <li><a href="{{route ('du')}}">Titipan DU</a></li>
+                    <li><a href="{{route ('allpayment')}}">All Payment</a></li>
                 </ul>
             </li>
             <li class="nav-item with-sub">
