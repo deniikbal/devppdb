@@ -77,6 +77,8 @@ Route::group(['middleware' => 'auth'], function () {
         ->name('updatebayar');
     Route::Delete('payment/{item}', [\App\Http\Controllers\PaymentController::class,'hapusbayar'])
         ->name('hapusbayar');
+    Route::put('sendwa/{item}', [\App\Http\Controllers\PaymentController::class,'sendwa'])
+        ->name('sendwa');
 
 
 

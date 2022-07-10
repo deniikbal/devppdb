@@ -1,128 +1,68 @@
 
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-
-    <!-- Required meta tags -->
+    <title>Login 07</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Twitter -->
-    <meta name="twitter:site" content="@themepixels">
-    <meta name="twitter:creator" content="@themepixels">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="DashForge">
-    <meta name="twitter:description" content="Responsive Bootstrap 4 Dashboard Template">
-    <meta name="twitter:image" content="http://themepixels.me/dashforge/img/dashforge-social.png">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
 
-    <!-- Facebook -->
-    <meta property="og:url" content="http://themepixels.me/dashforge">
-    <meta property="og:title" content="DashForge">
-    <meta property="og:description" content="Responsive Bootstrap 4 Dashboard Template">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <meta property="og:image" content="http://themepixels.me/dashforge/img/dashforge-social.png">
-    <meta property="og:image:secure_url" content="http://themepixels.me/dashforge/img/dashforge-social.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="600">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
-    <!-- Meta -->
-    <meta name="description" content="Responsive Bootstrap 4 Dashboard Template">
-    <meta name="author" content="ThemePixels">
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('/assets/img/favicon.png')}}">
-
-    <title>Login Web PPDB</title>
-
-    <!-- vendor css -->
-    <!-- vendor css -->
-
-    <link href="{{asset('/lib/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
-    <link href="{{asset('/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
-
-    <!-- DashForge CSS -->
-    <link rel="stylesheet" href="{{asset('/assets/css/dashforge.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/dashforge.auth.cs')}}s">
 </head>
 <body>
-
-
-<div class="content content-fixed content-auth" style="padding: 5px">
+<section class="ftco-section">
     <div class="container">
-        <div class="media align-items-stretch justify-content-center ht-100p pos-relative">
-            <div class="card shadow-lg p-3">
-                <div class="card-body">
-                    <img src="{{asset('/assets/img/logolog.png')}}" style="margin-left: 90px"
-                         class="img-fluid" width="160" height="75">
-                    <h3 class="tx-color-01 mg-b-5">PPDB SMA TELKOM BANDUNG</h3>
-                    <p class="tx-color-03 tx-16 mg-b-40">Welcome back! Please signin to continue.</p>
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-                        <div class="form-group">
-                            <label>Email address</label>
-                            <input type="email" class="form-control" name="email" placeholder="yourname@yourmail.com">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="wrap d-md-flex">
+                    <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
+                        <div class="text w-100">
+                            <h2>Welcome to login</h2>
+                            <p>Don't have an account?</p>
+                            <a href="{{route('register')}}" class="btn btn-white btn-outline-white">Sign Up</a>
                         </div>
-                        <div class="form-group">
-                            <div class="d-flex justify-content-between mg-b-5">
-                                <label class="mg-b-0-f">Password</label>
+                    </div>
+                    <div class="login-wrap p-4 p-lg-5">
+                        <div class="d-flex">
+                            <div class="w-100">
+                                <h3 class="mb-4">Sign In</h3>
                             </div>
-                            <input type="password" name="password" class="form-control" placeholder="Enter your password">
+                            <div class="w-100">
+                                <p class="social-media d-flex justify-content-end">
+                                    <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+                                    <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+                                </p>
+                            </div>
                         </div>
-                        <button class="btn btn-danger btn-block">Sign In</button>
-                    </form>
-                    <div class="tx-13 mg-t-20 tx-center">Belum memiliki akun? <a href="{{route('register')}}">Daftar Sekarang</a></div>
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
+                            <div class="form-group mb-3">
+                                <label class="label" for="name">Email</label>
+                                <input type="text" name="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="label" for="password">Password</label>
+                                <input type="password" name="password" class="form-control" placeholder="Password" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div><!-- media -->
-
-    </div><!-- container -->
-</div><!-- content -->
-
-<footer class="footer mt-5">
-    <div>
-        <span>&copy; {{\Carbon\Carbon::now()->format('Y')}} DashForge v1.0.0. </span>
+        </div>
     </div>
-    <div>
-        <nav class="nav">
-            <span>Designed by <a href="https://www.instagram.com/deni_ikbal/"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg> Deni Muhamad Ikbal</a></span>
-        </nav>
-    </div>
-</footer>
+</section>
 
-<script src="{{asset('/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{asset('/lib/feather-icons/feather.min.js')}}"></script>
-<script src="{{asset('/lib/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
-<script src="{{asset('/lib/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<script src="{{asset('js/popper.js')}}"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/main.js')}}"></script>
 
-<script src="{{asset('/assets/js/dashforge.js')}}"></script>
-
-<!-- append theme customizer -->
-<script src="{{asset('/lib/js-cookie/js.cookie.js')}}"></script>
-<script src="{{asset('/assets/js/dashforge.settings.js')}}"></script>
-<script>
-    $(function(){
-        'use script'
-
-        window.darkMode = function(){
-            $('.btn-white').addClass('btn-dark').removeClass('btn-white');
-        }
-
-        window.lightMode = function() {
-            $('.btn-dark').addClass('btn-white').removeClass('btn-dark');
-        }
-
-        var hasMode = Cookies.get('df-mode');
-        if(hasMode === 'dark') {
-            darkMode();
-        } else {
-            lightMode();
-        }
-    })
-</script>
 </body>
 </html>

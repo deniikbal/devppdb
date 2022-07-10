@@ -48,6 +48,7 @@
                         <th >Bukti Bayar</th>
                         <th >Kwitansi</th>
                         <th >Verifikasi</th>
+                        <th >Send WhatsApp</th>
                         <th >Aksi</th>
                     </tr>
                     </thead>
@@ -82,6 +83,10 @@
                             </td>
                             <td>
                                 <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                        data-target="#sendwa{{$item->id}}">Send Wa</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
                                         data-target="#editbayar{{$item->id}}">
                                     <i data-feather="edit"></i>Edit</button>
                                 <form onclick="confirm('Yakin Mau Menghapus Pembayaran?')" style="display: inline-block" action="{{route('hapusbayar', $item->id)}}" method="post">
@@ -93,6 +98,7 @@
                         </tr>
                         @include('siswa.modal.viewbuktibayar')
                         @include('siswa.modal.editbayar')
+                        @include('siswa.modal.sendwa')
 
                     @endforeach
                     </tbody>

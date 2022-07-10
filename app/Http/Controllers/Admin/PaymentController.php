@@ -104,7 +104,7 @@ class PaymentController extends Controller
         $students = Student::with('payment')
             ->where('verifikasi_bayar', 1)
             ->get();
-        $total = Payment::with('student')->sum('nominal');
+        $total = Payment::with('student')->where('verifikasi',1)->sum('nominal');
         return view('admin.payment.allpayment', compact('main', 'sub',
             'students', 'total'));
 

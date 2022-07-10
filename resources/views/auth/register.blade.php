@@ -1,133 +1,99 @@
 
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
+    <title>Sign Up 08</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('/assets/img/favicon.png')}}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
-    <title>Login Web PPDB</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link href="{{asset('/lib/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
-    <link href="{{asset('/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/signup/style.css')}}">
 
-    <!-- DashForge CSS -->
-    <link rel="stylesheet" href="{{asset('/assets/css/dashforge.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/dashforge.auth.cs')}}s">
 </head>
 <body>
-
-
-<div class="content content-fixed content-auth" style="padding: 5px">
+<section class="ftco-section">
     <div class="container">
-        <div class="media align-items-stretch justify-content-center ht-100p pos-relative">
-            <div class="card shadow-lg p-4">
-                <div class="card-header">
-                    <img src="{{asset('/assets/img/logolog.png')}}"
-                         class="img-fluid" width="200" height="75" style="margin-left: 60px;"><br>
-                    <h4 class="tx-color-01 mg-b-5 text-center">PPDB SMA TELKOM BANDUNG</h4>
-                </div>
-                <div class="card-body ">
-                    <form method="POST" action="{{ route('register') }}">
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-lg-5">
+                <div class="login-wrap">
+                    <div class="img" style="background-image: url(images/logo.png);"></div>
+                    <h3 class="text-center mb-4">Sign Up</h3>
+                    <form action="{{route('register')}}" method="post" class="signup-form">
                         @csrf
-                        <div class="form-group mb-2">
-                            <label>Alamat Email</label>
-                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
-                                   placeholder="youremail@email.com" value="{{old('email')}}">
+                        <div class="form-group mb-3">
+                            <input type="text" name="email" class="form-control @error('email') is-invalid @enderror"
+                                   placeholder="Your Email Address">
                             @error('email')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                             @enderror
                         </div>
-                        <div class="form-group mb-2">
-                            <div class="d-flex justify-content-between mg-b-5">
-                                <label class="mg-b-0-f">Password</label>
-                            </div>
-                            <input type="password" name="password" class="form-control  @error('password') is-invalid @enderror"
-                                   placeholder="Password min:8 ">
+                        <div class="form-group mb-3">
+                            <input id="password-field" type="password" name="password" class="form-control @error('password') is-invalid @enderror"
+                                   placeholder="Password min:8">
+                            <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                             @error('password')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
                             @enderror
                         </div>
-                        <div class="form-group mb-2">
-                            <label>Nama Lengkap</label>
+                        <div class="form-group mb-3">
                             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                                   placeholder="Tulis Nama Lengkap" value="{{old('name')}}">
+                                   placeholder="Nama Lengkap">
                             @error('name')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
+                            <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                             @enderror
                         </div>
-                        <div class="form-group mb-2">
-                            <label>No Whatsapp</label>
+                        <div class="form-group mb-3">
                             <input type="text" name="nohp" class="form-control @error('nohp') is-invalid @enderror"
-                                   placeholder="081234567819" value="{{old('nohp')}}">
+                                   placeholder="Nomor Whatsapp">
                             @error('nohp')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
+                            <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                             @enderror
                         </div>
-                        <button class="btn btn-danger btn-block mt-3" type="submit">Create Account</button>
-                        <div class="card-footer">
-                            <div class="tx-13 mg-t-20 tx-center">Sudah pernah daftar? <a href="{{route('login')}}">Sign In</a></div>
+                        <div class="form-group">
+                            <button type="submit" class="form-control btn btn-primary submit px-3">Sign Up</button>
                         </div>
                     </form>
+                    <p class="text-center">I'm already a member! <a href="{{route('login')}}">Sign In</a></p>
                 </div>
             </div>
-        </div><!-- media -->
-
-    </div><!-- container -->
-</div><!-- content -->
-
-<footer class="footer mt-5">
-    <div>
-        <span>&copy; {{\Carbon\Carbon::now()->format('Y')}} DashForge v1.0.0. </span>
+        </div>
     </div>
-    <div>
-        <nav class="nav">
-            <span>Designed by <a href="https://www.instagram.com/deni_ikbal/"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg> Deni Muhamad Ikbal</a></span>
-        </nav>
-    </div>
-</footer>
+</section>
 
-<script src="{{asset('/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{asset('/lib/feather-icons/feather.min.js')}}"></script>
-<script src="{{asset('/lib/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
-<script src="{{asset('/lib/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<script src="{{asset('js/popper.js')}}"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/main.js')}}"></script>
 
-<script src="{{asset('/assets/js/dashforge.js')}}"></script>
-
-<!-- append theme customizer -->
-<script src="{{asset('/lib/js-cookie/js.cookie.js')}}"></script>
-<script src="{{asset('/assets/js/dashforge.settings.js')}}"></script>
 <script>
-    $(function(){
-        'use script'
+    (function($) {
 
-        window.darkMode = function(){
-            $('.btn-white').addClass('btn-dark').removeClass('btn-white');
-        }
+        "use strict";
 
-        window.lightMode = function() {
-            $('.btn-dark').addClass('btn-white').removeClass('btn-dark');
-        }
+        $(".toggle-password").click(function() {
 
-        var hasMode = Cookies.get('df-mode');
-        if(hasMode === 'dark') {
-            darkMode();
-        } else {
-            lightMode();
-        }
-    })
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+        });
+    })(jQuery);
 </script>
+
 </body>
 </html>
+

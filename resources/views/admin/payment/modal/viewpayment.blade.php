@@ -11,7 +11,7 @@
             $bayar = \App\Models\Payment::with('student')->where('student_id', $item->id)
             ->where('verifikasi', '1')
             ->get();
-            $total = \App\Models\Payment::where('student_id', $item->id)->sum('nominal');
+            $total = \App\Models\Payment::where('student_id', $item->id)->where('verifikasi',1)->sum('nominal');
             $sisa = 11600000 - $total;
             @endphp
             <div class="modal-body">

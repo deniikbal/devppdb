@@ -1,65 +1,47 @@
+// Toggles
+//
+// Used in conjunction with global variables to enable certain theme features.
 
+// Vendor
+@import "vendor/rfs";
 
-@mixin alert-outline-variant($text-color, $border-color) {
-  border-color: $border-color;
-  color: $text-color;
-}
+// Deprecate
+@import "mixins/deprecate";
 
-// Popover Header Variant
-@mixin popover-header-variant($color) {
-  &.bs-popover-bottom {
-    .arrow::before,
-    .arrow::after {
-      border-bottom-color: $color;
-    }
-  }
+// Utilities
+@import "mixins/breakpoints";
+@import "mixins/hover";
+@import "mixins/image";
+@import "mixins/badge";
+@import "mixins/resize";
+@import "mixins/screen-reader";
+@import "mixins/size";
+@import "mixins/reset-text";
+@import "mixins/text-emphasis";
+@import "mixins/text-hide";
+@import "mixins/text-truncate";
+@import "mixins/visibility";
 
-  .popover-header { background-color: $color; }
-}
+// // Components
+@import "mixins/alert";
+@import "mixins/buttons";
+@import "mixins/caret";
+@import "mixins/pagination";
+@import "mixins/lists";
+@import "mixins/list-group";
+@import "mixins/nav-divider";
+@import "mixins/forms";
+@import "mixins/table-row";
 
-// Popover Full Background Color Variant
-@mixin popover-full-variant($color) {
-  background-color: $color;
-  &.bs-popover-top .arrow::after { border-top-color: $color; }
-  &.bs-popover-bottom .arrow::after { border-bottom-color: $color; }
-  &.bs-popover-right .arrow::after { border-right-color: $color; }
-  &.bs-popover-left .arrow::after { border-left-color: $color; }
-}
+// // Skins
+@import "mixins/background-variant";
+@import "mixins/border-radius";
+@import "mixins/box-shadow";
+@import "mixins/gradients";
+@import "mixins/transition";
 
-// Tooltip color variant
-@mixin tooltip-variant($color) {
-  .tooltip-inner { background-color: $color; }
-
-  &.bs-tooltip-top,
-  &.bs-tooltip-auto[x-placement^="top"] {
-    .arrow::before { border-top-color: $color; }
-  }
-
-  &.bs-tooltip-bottom,
-  &.bs-tooltip-auto[x-placement^="bottom"] {
-    .arrow::before { border-bottom-color: $color; }
-  }
-
-  &.bs-tooltip-left,
-  &.bs-tooltip-auto[x-placement^="left"] {
-    .arrow::before { border-left-color: $color; }
-  }
-
-  &.bs-tooltip-right,
-  &.bs-tooltip-auto[x-placement^="right"] {
-    .arrow::before { border-right-color: $color; }
-  }
-}
-
-@mixin table-variant($thead-bg, $tbody-bg) {
-  thead { background-color: $thead-bg; }
-  tbody tr { background-color: $tbody-bg; }
-
-  &.table-striped tbody tr:nth-of-type(2n+1) {
-    background-color: darken($tbody-bg, 3%);
-  }
-
-  &.table-hover tbody tr:hover {
-    background-color: darken($tbody-bg, 6%);
-  }
-}
+// // Layout
+@import "mixins/clearfix";
+@import "mixins/grid-framework";
+@import "mixins/grid";
+@import "mixins/float";

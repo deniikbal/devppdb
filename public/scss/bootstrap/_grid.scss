@@ -1,64 +1,52 @@
+// Container widths
+//
+// Set the container width, and override it for fixed navbars in media queries.
 
-.row-sm {
-  margin-left: -10px;
-  margin-right: -10px;
-
-  > div {
-    padding-left: 10px;
-    padding-right: 10px;
+@if $enable-grid-classes {
+  .container {
+    @include make-container();
+    @include make-container-max-widths();
   }
 }
 
-.row-xs {
-  margin-left: -5px;
-  margin-right: -5px;
+// Fluid container
+//
+// Utilizes the mixin meant for fixed width containers, but with 100% width for
+// fluid, full width layouts.
 
-  > div {
-    padding-left: 5px;
-    padding-right: 5px;
+@if $enable-grid-classes {
+  .container-fluid {
+    @include make-container();
   }
 }
 
-.row-xxs {
-  margin-left: -1px;
-  margin-right: -1px;
+// Row
+//
+// Rows contain and clear the floats of your columns.
 
-  > div {
-    padding-left: 1px;
-    padding-right: 1px;
+@if $enable-grid-classes {
+  .row {
+    @include make-row();
+  }
+
+  // Remove the negative margin from default .row, then the horizontal padding
+  // from all immediate children columns (to prevent runaway style inheritance).
+  .no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+
+    > .col,
+    > [class*="col-"] {
+      padding-right: 0;
+      padding-left: 0;
+    }
   }
 }
 
-@mixin create-row($padding) {
-  margin-left: -$padding;
-  margin-right: -$padding;
+// Columns
+//
+// Common styles for small and large grid columns
 
-  > div {
-    padding-left: $padding;
-    padding-right: $padding;
-  }
-}
-
-@include media-breakpoint-up(sm) {
-  .row-xs--sm { @include create-row(5px); }
-  .row-sm--sm { @include create-row(10px); }
-  .row--sm { @include create-row(15px); }
-}
-
-@include media-breakpoint-up(md) {
-  .row-xs--md { @include create-row(5px); }
-  .row-sm--md { @include create-row(10px); }
-  .row--md { @include create-row(15px); }
-}
-
-@include media-breakpoint-up(lg) {
-  .row-xs--lg { @include create-row(5px); }
-  .row-sm--lg { @include create-row(10px); }
-  .row--lg { @include create-row(15px); }
-}
-
-@include media-breakpoint-up(xl) {
-  .row-xs--xl { @include create-row(5px); }
-  .row-sm--xl { @include create-row(10px); }
-  .row--xl { @include create-row(15px); }
+@if $enable-grid-classes {
+  @include make-grid-columns();
 }

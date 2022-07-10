@@ -125,5 +125,21 @@ class PaymentController extends Controller
 
     }
 
+    public function sendwa($item)
+    {
+        $payment = Payment::find($item);
+        $data = [
+            'id_bayar' => $payment->id_bayar,
+            'jenis_pembayaran' => $payment->jenis_pembayaran,
+            'nominal' => $payment->nominal,
+            'tanggal' => $payment->tanggal,
+            'jenis_bayar' => $payment->jenis_bayar,
+            'bukti_bayar' => $payment->bukti_bayar,
+            'keterangan' => $payment->keterangan,
+        ];
+        SendPayment::dispatch($payment);
+        return redirect()->back()->with('success', 'Whatsapp Berhasil di Kirim');
+    }
+
 
 }

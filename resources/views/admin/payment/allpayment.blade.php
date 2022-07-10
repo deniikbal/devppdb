@@ -3,7 +3,7 @@
     <div class="container">
         <div class="card">
             <div class="alert alert-solid alert-danger" role="alert">
-                <h5 class="text-white">Total Saldo Daftar Ulang : @currency($total)</h5>
+                <h5 class="text-white">Total Saldo Pembayaran : @currency($total)</h5>
             </div>
             <div class="card-header d-flex justify-content-between">
                 <h5>Daftar Ulang (DU)</h5>
