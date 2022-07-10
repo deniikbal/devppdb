@@ -8,7 +8,9 @@
                 </button>
             </div>
             @php
-            $bayar = \App\Models\Payment::with('student')->where('student_id', $item->id)->get();
+            $bayar = \App\Models\Payment::with('student')->where('student_id', $item->id)
+            ->where('verifikasi', '1')
+            ->get();
             $total = \App\Models\Payment::where('student_id', $item->id)->sum('nominal');
             $sisa = 11600000 - $total;
             @endphp
