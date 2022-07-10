@@ -64,6 +64,8 @@ Route::group(['middleware' => 'auth'], function () {
         ->name('printkartu');
     Route::get('printformulir/{student}',[\App\Http\Controllers\PrintFormulirController::class,'printformulir'])
         ->name('printformulir');
+    Route::get('kwitansi/{item}',[\App\Http\Controllers\PrintKwitansiController::class,'kwitansi'])
+        ->name('kwitansi');
     //PAYMENT STUDENT
     Route::get('/payments/{student}/edit',[\App\Http\Controllers\PaymentController::class,'index'])
         ->name('payments');
@@ -71,7 +73,7 @@ Route::group(['middleware' => 'auth'], function () {
         ->name('addpayment');
     Route::post('/editbayar/{payment}',[\App\Http\Controllers\PaymentController::class,'update'])
         ->name('editbayar');
-    Route::PUT('/updatebayar/{id}',[\App\Http\Controllers\PaymentController::class,'updatebayar'])
+    Route::PUT('/updatebayar/{item}',[\App\Http\Controllers\PaymentController::class,'updatebayar'])
         ->name('updatebayar');
     Route::Delete('payment/{item}', [\App\Http\Controllers\PaymentController::class,'hapusbayar'])
         ->name('hapusbayar');

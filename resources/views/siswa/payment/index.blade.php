@@ -46,6 +46,7 @@
                         <th >Tanggal</th>
                         <th >Jenis Bayar</th>
                         <th >Bukti Bayar</th>
+                        <th >Kwitansi</th>
                         <th >Verifikasi</th>
                         <th >Aksi</th>
                     </tr>
@@ -68,6 +69,9 @@
                             <td><button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
                                         data-target="#viewsertifikat{{$item->id}}">
                                     <i data-feather="eye"></i></button>
+                            </td>
+                            <td>
+                                <a href="{{route('kwitansi',$item->id)}}" class="badge badge-danger">Kwitansi</a>
                             </td>
                             <td>
                                 @if($item->verifikasi==0)
