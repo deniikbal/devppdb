@@ -23,6 +23,7 @@ class PaymentController extends Controller
         $sub = 'Titipan Daftar Ulang';
         $payments = Payment::with('student')
             ->where('jenis_pembayaran', 'tdu')
+            ->where('verifikasi',1)
             ->get();
         $totaldu = Payment::with('student')->where('jenis_pembayaran', 'tdu')
             ->sum('nominal');
