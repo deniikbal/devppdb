@@ -30,18 +30,8 @@ class PaymentController extends Controller
         }
         //dd($request->keterangan);
         $student = Student::find($student->id);
-        if($request->keterangan!= null){
-            $payment = Payment::create([
-                'student_id'=> $student->id,
-                'id_bayar' => $idbayar,
-                'jenis_pembayaran' => $request->jenis_pembayaran,
-                'nominal' => $request->nominal,
-                'tanggal' => $request->tanggal,
-                'jenis_bayar' => $request->jenis_bayar,
-                'bukti_bayar' => $save,
-                'keterangan' => $request->keterangan,
-            ]);
-        }else{
+        $count = Payment::where('student_id',$student->id)->count();
+        if($count==0){
             $payment = Payment::create([
                 'student_id'=> $student->id,
                 'id_bayar' => $idbayar,
@@ -51,6 +41,17 @@ class PaymentController extends Controller
                 'jenis_bayar' => $request->jenis_bayar,
                 'bukti_bayar' => $save,
                 'keterangan' => "Titipan Pembayaran",
+            ]);
+        }else{
+            $payment = Payment::create([
+                'student_id'=> $student->id,
+                'id_bayar' => $idbayar,
+                'jenis_pembayaran' => $request->jenis_pembayaran,
+                'nominal' => $request->nominal,
+                'tanggal' => $request->tanggal,
+                'jenis_bayar' => $request->jenis_bayar,
+                'bukti_bayar' => $save,
+                'keterangan' => $request->keterangan,
             ]);
         }
         SendPayment::dispatch($payment);

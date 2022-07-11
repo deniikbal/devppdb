@@ -1,3 +1,9 @@
-[2022-07-04 20:55:01][23] Processing: App\Jobs\SendPayment
-<pre>{"status":false,"msg":"Request failed with status code 404"}[2022-07-04 20:55:07][23] Processed:  App\Jobs\SendPayment
+[2022-07-12 05:40:03][1] Processing: App\Jobs\SendPayment
+[2022-07-12 05:40:03][1] Failed:     App\Jobs\SendPayment
+[2022-07-12 05:40:03][2] Processing: App\Jobs\SendPayment
+[2022-07-12 05:40:03][2] Failed:     App\Jobs\SendPayment
+[2022-07-12 05:40:03][3] Processing: App\Jobs\SendPayment
+[2022-07-12 05:40:03][3] Failed:     App\Jobs\SendPayment
+[2022-07-12 05:45:09][4] Processing: App\Jobs\SendPayment
+[2022-07-12 05:45:09][4] Failed:     App\Jobs\SendPayment
 ^C

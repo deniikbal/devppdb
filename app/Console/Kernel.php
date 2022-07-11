@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('queue:work')->everyMinute()->sendOutputTo('hasilnya.log');
+        $schedule->command('queue:work')->everyFiveMinutes()->sendOutputTo('hasilnya.log');
     }
 
     /**
