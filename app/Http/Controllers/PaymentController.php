@@ -138,7 +138,7 @@ class PaymentController extends Controller
             'keterangan' => $payment->keterangan,
         ];
         SendPayment::dispatch($payment);
-        return redirect()->back()->with('success', 'Whatsapp Berhasil di Kirim');
+        return redirect()->back()->with('success', 'Whatsapps Berhasil di Kirim');
     }
 
 
