@@ -46,7 +46,7 @@ class SendPayment implements ShouldQueue
             'message' => "Nama Siswa : $student->name \nNo Daftar: $student->nodaftar
             \nNominal : Rp. $payment->nominal \nId Bayar : $payment->id_bayar
             \nJenis Pembayaran : $payment->jenis_pembayaran, \nBayar : $payment->jenis_bayar \n\n$whatsapp->message",
-            'url' => "https://smktelkom-pwt.sch.id/wp-content/uploads/2019/02/logo-telkom-schools-bundar-1024x1024.png",
+            'url' => "https://ppdb2023.smatelkombandung.sch.id/storage/$payment->bukti_bayar",
         ];
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
