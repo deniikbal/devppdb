@@ -30,7 +30,8 @@ class StudentController extends Controller
     {
         $title = 'Dashboard';
         $student = Student::where('user_id', auth()->id())->first();
-        $count = User::with('student')->where('id',auth()->id())->get()->count();
+        $count = Student::where('user_id',auth()->id())->get()->count();
+        //dd($count);
         return view('siswa.home' , compact('student','title','count'));
     }
 
