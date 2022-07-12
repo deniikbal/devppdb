@@ -17,6 +17,7 @@ class SendWaRegister implements ShouldQueue
 
     protected $user;
     public $tries = 3;
+    public $timeout = 120;
 
     /**
      * Create a new job instance.

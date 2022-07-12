@@ -16,6 +16,7 @@ class SendWa implements ShouldQueue
 
     protected $student;
     public $tries = 3;
+    public $timeout = 120;
 
     /**
      * Create a new job instance.
