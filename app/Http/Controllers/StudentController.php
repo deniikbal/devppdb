@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateRequestStudent;
 use App\Http\Requests\UpdataRequestParent;
 use App\Http\Requests\UpdataRequestProfile;
 use App\Http\Requests\UpdataRequestScholl;
@@ -28,32 +29,28 @@ class StudentController extends Controller
     public function index()
     {
         $title = 'Dashboard';
-        $students = Student::where('user_id', auth()->id())->get();
-
-        $count = count($students);
-        return view('siswa.home' , compact('students', 'count', 'title'));
+        $student = Student::where('user_id', auth()->id())->first();
+        $count = User::with('student')->where('id',auth()->id())->get()->count();
+        return view('siswa.home' , compact('student','title','count'));
     }
 
-    public function store(Request $request)
+    public function store(CreateRequestStudent $request)
     {
 
-        $nodaftar = IdGenerator::generate(['table' => 'students','field'=>'nodaftar', 'length' => 10, 'prefix' =>('SMATEL-')]);
 
-        $name = $request->name;
+        $Id = IdGenerator::generate(['table' => 'students','field'=>'nodaftar', 'length' => 10, 'prefix' =>('SMATEL-')]);
         $student = Student::create([
             'name'=>$request->name,
             'kecamatan_pd'=>$request->kecamatan_pd,
             'jenis_kelamin'=>$request->jenis_kelamin,
-            'asal_sekolah'=>$request->asalsekolah,
+            'asal_sekolah'=>$request->asal_sekolah,
             'user_id'=> auth()->id(),
-            'nodaftar'=>$nodaftar,
+            'nodaftar'=>$Id,
             'nohp_ortu'=>Auth::user()->nohp,
             'nohp_siswa'=>$request->nohp_siswa,
             'id'=>Str::uuid(),
         ]);
-
         SendRegisStudent::dispatch($student);
-
         return redirect()->route('students.index');
     }
 
