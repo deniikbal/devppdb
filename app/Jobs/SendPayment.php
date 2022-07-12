@@ -16,6 +16,7 @@ class SendPayment implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     protected $payment;
+    public $tries = 3;
 
     /**
      * Create a new job instance.
