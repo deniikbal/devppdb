@@ -47,14 +47,33 @@ class UserController extends Controller
             }
             $save=$request->file('avatar')->store('avatar');
         }
-        $user->update([
-            'avatar'=>$save,
-            'name' => $request->name,
-            'email' => $request->email,
-            'nohp' => $request->nohp,
-            'password' => Hash::make($request->password),
-            'role'=>$request->role,
-        ]);
+
+        if($request->avatar==null){
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'nohp' => $request->nohp,
+                'role'=>$request->role,
+            ]);
+        }else{
+            $user->update([
+                'avatar'=>$save,
+                'name' => $request->name,
+                'email' => $request->email,
+                'nohp' => $request->nohp,
+                'role'=>$request->role,
+            ]);
+        }
         return redirect()->back()->with('success', 'User Berhasil di Update');
+    }
+
+    public function changepass(Request $request, $user)
+    {
+        $user = User::find($user);
+        $user->update([
+            'password' => Hash::make($request->password),
+            'password_plain' => $request->password,
+        ]);
+        return redirect()->back()->with('success', 'Password Berhasil di Update');
     }
 }

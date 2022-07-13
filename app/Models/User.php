@@ -23,6 +23,7 @@ class User extends Authenticatable
         'password',
         'role',
         'nohp',
+        'avatar',
         'password_plain',
     ];
 

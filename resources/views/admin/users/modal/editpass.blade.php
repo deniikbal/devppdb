@@ -1,4 +1,5 @@
-<div class="modal fade" id="edituser{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editpass{{$user->id}}" tabindex="-1"
+     aria-labelledby="editpass" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -15,6 +16,12 @@
                         <label class="col-sm-4 col-form-label">Email: <span class="tx-danger">*</span></label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" value="{{$user->email}}" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label class="col-sm-4 col-form-label">Password: <span class="tx-danger">*</span></label>
+                        <div class="col-sm-6">
+                            <input type="password" class="form-control" name="password">
                         </div>
                     </div>
                     <div class="form-group row mb-2">
