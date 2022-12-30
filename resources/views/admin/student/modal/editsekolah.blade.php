@@ -12,7 +12,7 @@
                 <form action="{{route('editsakolabudak', $item->id)}}" method="post">
                     @csrf
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Pilih Nama Sekolah Dahulu</label>
+                        <label for="exampleFormControlSelect1">Pilih Nama Sekolah</label>
                         <select class="form-control select2" name="asal_sekolah">
                             <option>---Pilih---</option>
                             @foreach($schools as $school)
