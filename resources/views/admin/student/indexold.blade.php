@@ -3,7 +3,7 @@
     <div class="container">
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
-                Data Semua Pendaftar
+                All Data Pendaftar
                 <a href="{{route('export')}}" class="btn btn-danger"><i data-feather="download"></i> Export</a>
             </div>
             <div class="card-body">

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Payment;
 use App\Models\School;
 use App\Models\Student;
 use App\Models\User;
@@ -13,12 +12,12 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $main = 'Calon Siswa';
+        $main = 'Semua Calon Siswa';
         $sub = 'Calon Siswa';
-        //$student = User::whereHas('student')->get()->sortBy('student.id');
-        $student = Student::all();
+        $student = User::whereHas('student')->get()->sortBy('student.id');
+        //$student = Student::all();
         $schools = School::all();
-        return view('admin.student.index', compact('main','sub','student','schools'));
+        return view('admin.student.indexold', compact('main', 'sub', 'student', 'schools'));
     }
 
     public function terverifikasi()
