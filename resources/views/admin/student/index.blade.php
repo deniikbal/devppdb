@@ -62,11 +62,14 @@
                                     <a href="{{route('abort')}}" target="_blank" class="btn btn-sm btn-primary">
                                         <i data-feather="eye"></i> View</a>
                                 @endif
+                                <button class="btn btn-danger">
+                                    Edit
+                                </button>
                                 <form onclick="confirm('Yakin Mau Mengirim Notif WA?')" style="display: inline-block"
                                       action="{{route('sendnotifwa', $item->id)}}" method="post">
                                     @csrf
                                     <button class="btn btn-success btn-sm"><i data-feather="trash-2"></i>Send WA <span
-                                            class="badge badge-pill badge-danger">{{$item->notifwa}}</span></button>
+                                                class="badge badge-pill badge-danger">{{$item->notifwa}}</span></button>
                                 </form>
 
                             </td>

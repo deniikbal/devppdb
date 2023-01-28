@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdataRequestProfile;
 use App\Models\School;
 use App\Models\Student;
 use App\Models\User;
@@ -15,7 +16,6 @@ class StudentController extends Controller
         $main = 'Semua Calon Siswa';
         $sub = 'Calon Siswa';
         $student = User::whereHas('student')->get()->sortBy('student.id');
-        //$student = Student::all();
         $schools = School::all();
         return view('admin.student.indexold', compact('main', 'sub', 'student', 'schools'));
     }
@@ -55,9 +55,29 @@ class StudentController extends Controller
     {
         $sekolah = Student::find($id);
         $sekolah->update([
-            'nohp_siswa'=>$request->nohp_siswa,
+            'nohp_siswa' => $request->nohp_siswa,
         ]);
         return redirect()->back()->with('success', 'Sekolah Berhasil Di Edit');
     }
+
+    public function editstudent(Request $request, Student $student)
+    {
+        $sub = 'Edit Student';
+        $main = 'Student';
+        $siswa = new Student();
+        $jenis_kelamin = $siswa->jenis_kelamin();
+        $agama = $siswa->agama();
+        $hoby = $siswa->hoby();
+        $cita = $siswa->cita();
+        return view('admin.student.editstudent',
+            compact('sub', 'main', 'student', 'jenis_kelamin', 'agama', 'hoby', 'cita'));
+    }
+
+    public function studentupdate(UpdataRequestProfile $request, Student $student)
+    {
+        $student->update($request->validated());
+        return redirect()->to('/studentall')->with('success', 'Data ' . $request->name . ' Berhasil diupdate');
+    }
+
 
 }

@@ -7,6 +7,14 @@
                 <a href="{{route('export')}}" class="btn btn-danger"><i data-feather="download"></i> Export</a>
             </div>
             <div class="card-body">
+                @if($message = Session::get('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Sukses</strong> {{$message}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
                 <table id="example2" class="table">
                     <thead class="table-danger">
                     <tr>
@@ -66,11 +74,15 @@
                                     <a href="{{route('abort')}}" target="_blank" class="btn btn-sm btn-primary">
                                         <i data-feather="eye"></i> View</a>
                                 @endif
+                                <a class="btn btn-danger btn-sm" href="{{route('editstudent',$item->student['id'])}}">
+                                    Edit
+                                </a>
                                 <form onclick="confirm('Yakin Mau Mengirim Notif WA?')" style="display: inline-block"
                                       action="{{route('sendnotifwa', $item->student['id'])}}" method="post">
                                     @csrf
                                     <button class="btn btn-success btn-sm"><i data-feather="trash-2"></i>Send WA <span
-                                            class="badge badge-pill badge-danger">{{$item->student['notifwa']}}</span></button>
+                                                class="badge badge-pill badge-danger">{{$item->student['notifwa']}}</span>
+                                    </button>
                                 </form>
 
                             </td>

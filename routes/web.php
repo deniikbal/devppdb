@@ -1,18 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\TestController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\PrintController;
-use App\Http\Controllers\SchoolController;
-use App\Http\Controllers\WhatsappController;
-use App\Http\Controllers\Admin\PaymentController;
-use App\Http\Controllers\Admin\SettingController;
-use App\Http\Controllers\Admin\StudentController;
-use App\Http\Controllers\PrintKwitansiController;
-use App\Http\Controllers\Admin\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,6 +26,8 @@ Route::middleware(['auth','admin'])->group(function () {
         ->name('edithpsiswa');
     Route::get('/abort', [StudentController::class, 'abort'])->name('abort');
     Route::get('/belumverifikasi', [StudentController::class, 'belumverifikasi'])->name('belumverifikasi');
+    Route::get('/editstudent/{student}', [StudentController::class, 'editstudent'])->name('editstudent');
+    Route::put('/studentupdate/{student}', [StudentController::class, 'studentupdate'])->name('studentupdate');
     //Payment Calon Siswa
     Route::get('/vp', [\App\Http\Controllers\Admin\PaymentController::class, 'vp'])->name('vp');
     Route::get('/du', [\App\Http\Controllers\Admin\PaymentController::class, 'du'])->name('du');
