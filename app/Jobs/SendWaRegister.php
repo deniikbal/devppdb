@@ -26,7 +26,7 @@ class SendWaRegister implements ShouldQueue
      */
     public function __construct(User $user)
     {
-        $this->user=$user;
+        $this->user = $user;
     }
 
     /**
@@ -39,35 +39,32 @@ class SendWaRegister implements ShouldQueue
         $user = $this->user;
         $wa = $user->notifwa + 1;
 
-        $whatsapp = Whatsapp::where('ket','reguser')->first();
+        $whatsapp = Whatsapp::where('ket', 'reguser')->first();
         $data = [
-            'api_key' => 'kXahnNSSmnh8VgBFH7cCVl9yWBHLeK',
-            'sender' => "$whatsapp->sender",
-            'number' => "$user->nohp",
+            'api_key' => 'huytkk8FrEfFJNyJ0r3HmU0DKzVE9tPQ',
+            'sender' => '081322299010',
+            'number' => $user->nohp,
             'message' => "*Acount User Berhasil Dibuat* \n\nNama User : $user->name \nEmail : $user->email \nPassword : $user->password_plain
             \n *PANITIA PPDB 2023*",
-            'footer' => '*PPDB SMA TELKOM BANDUNG*',
-            'template1' => 'url|Login|http://ppdb.smatelkombandung.sch.id/login', //REQUIRED ( template minimal 1 )
+            // 'footer' => '*PPDB SMA TELKOM BANDUNG*',
+            // 'template1' => 'url|Login|http://ppdb.smatelkombandung.sch.id/login', //REQUIRED ( template minimal 1 )
         ];
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data) );
-        curl_setopt($curl, CURLOPT_URL, 'https://wa.ypt.or.id/send-template');
+        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($curl, CURLOPT_URL, 'https://pedia.ypt.or.id/send-message');
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($curl, CURLOPT_ENCODING,'');
-        curl_setopt($curl, CURLOPT_MAXREDIRS,10);
+        curl_setopt($curl, CURLOPT_ENCODING, '');
+        curl_setopt($curl, CURLOPT_MAXREDIRS, 10);
         $result = curl_exec($curl);
         curl_close($curl);
         echo "<pre>";
         print_r($result);
 
         $user->update([
-            'notifwa'=>$wa,
+            'notifwa' => $wa,
         ]);
-
-
-
     }
 }

@@ -64,7 +64,7 @@
                 <h1 data-aos="fade-up">PPDB Online</h1>
                 <h3 data-aos="fade-up">SMA TELKOM BANDUNG</h3>
                 <h4 data-aos="fade-up" data-aos-delay="400" class="mt-3">Untuk calon pendaftar tahun ajaran
-                    2023/2024 bisa mendaftar melalui website ini atau langsung datang ke tempat pendaftaran</h4>
+                    2024/2025 bisa mendaftar melalui website ini atau langsung datang ke tempat pendaftaran</h4>
                 <div data-aos="fade-up" data-aos-delay="600">
 
                     @if (Route::has('login'))
